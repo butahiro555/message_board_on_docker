@@ -1,0 +1,8 @@
+1. ターミナル上で、git clone https://github.com/butahiro555/docker_project.gitを実行し、プロジェクトフォルダをDLする
+2. .gitignoreに記述してあるフォルダや、ファイルを.gitignoreの通りにリネームし、.envに値を挿入する。
+3．プロジェクトフォルダ直下で、各コンテナをビルドする。
+
+-Laravelを使用する場合
+docker compose exec -it app bashで、コンテナ内に入り、composer create-project --prefer-dist laravel/laravel フォルダ名 "10.(バージョン)*"で、Laravelをインストールする。
+（コンテナ内で実行することで、テスト環境と、本番環境が似た状況で開発が進められる。）
+コンテナ内にあるLaravelのプロジェクトフォルダをコピーして、プロジェクト直下のフォルダに移動すると、GUIでも確認できる。
