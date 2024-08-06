@@ -8,6 +8,7 @@ services:
       - "80:80"  # ホストとコンテナのポートマッピング
     volumes:
       - ./src:/src  # ソースコードのマウント
+      - ./docker/nginx/logs:/var/log/nginx/logs  # ホスト側のログディレクトリをマウント
     depends_on:
       - app  # このサービスが依存するサービス
     # Nginxに関連する追加の設定や最適化が必要な場合があります。
