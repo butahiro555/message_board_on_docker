@@ -1,0 +1,4 @@
+# gitの変更履歴に含めないフォルダ、ファイル一覧
+docker/mysql
+docker/nginx/logs
+.env
