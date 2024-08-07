@@ -26,7 +26,9 @@ services:
     container_name: mysql  # MySQLコンテナの名前
     image: mysql:8.0.38  # 使用するMySQLイメージ
     volumes:
-      - ./docker/mysql:/var/lib/mysql  # データベースデータのマウント
+      - ./docker/mysql/data:/var/lib/mysql  # MySQLのデータファイル
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf  # MySQLの設定ファイル
+      - ./docker/mysql/init.sql:/etc/mysql/init.sql  # 初期化SQLスクリプト
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}  # 環境変数の設定
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
