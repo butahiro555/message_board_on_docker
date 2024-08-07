@@ -1,6 +1,6 @@
 FROM php:8.3-fpm
 
-# 必要なパッケージのインストールとクリーンアップ
+# 必要なパッケージのインストールとクリーンアップ(vimは任意)
 RUN apt-get update && \
     apt-get install -y \
     git \
@@ -14,12 +14,10 @@ RUN apt-get update && \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # 作業ディレクトリの設定
-WORKDIR /src
+WORKDIR /var/www/html
 
 # アプリケーションコードのコピー
-COPY . /src
-
-ADD . /src/storage
+COPY . .
 
 # ストレージディレクトリの権限設定
-RUN chown -R www-data:www-data /src/storage
+RUN chown -R www-data:www-data /var/www/html/storage
