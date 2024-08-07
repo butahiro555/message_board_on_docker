@@ -7,10 +7,9 @@ services:
     ports:
       - "80:80"  # ホストとコンテナのポートマッピング
     volumes:
-      - ./docker/nginx/logs:/var/log/nginx
+      - ./docker/nginx/logs:/var/log/nginx　# logsフォルダに、コンテナ内のアクセスログと、エラーログをマウントする
     depends_on:
       - app  # このサービスが依存するサービス
-    # Nginxに関連する追加の設定や最適化が必要な場合があります。
 
   app:
     container_name: php  # PHPコンテナの名前
@@ -22,8 +21,7 @@ services:
     volumes:
       - ./src:/var/www/html  # ソースコードのマウント
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini  # PHP設定ファイルのマウント
-    # PHPに関連する設定や最適化が必要な場合があります。
-
+      
   db:
     container_name: mysql  # MySQLコンテナの名前
     image: mysql:8.0.38  # 使用するMySQLイメージ
@@ -43,7 +41,6 @@ services:
       timeout: 5s  # タイムアウト
       retries: 3  # リトライ回数
       start_period: 30s  # 起動後の猶予時間
-    # MySQLに関連する設定や最適化が必要な場合があります。
 
   redis:
     image: redis:alpine  # 使用するRedisイメージ
