@@ -7,7 +7,7 @@ services:
     ports:
       - "80:80"  # ホストとコンテナのポートマッピング
     volumes:
-      - ./docker/nginx/logs:/var/log/nginx # logsフォルダに、コンテナ内のアクセスログと、エラーログをマウントする
+      - ./docker/nginx/logs:/var/log/nginx  # logsフォルダに、コンテナ内のアクセスログと、エラーログをマウントする
     depends_on:
       - app  # このサービスが依存するサービス
 
