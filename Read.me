@@ -1,18 +1,5 @@
-1. ターミナル上で、git clone https://github.com/butahiro555/docker_project.git を実行し、プロジェクトフォルダをDLする
-
-2. .gitignoreに記述してあるフォルダや、ファイルを以下の通りにリネームする。
-docker_project/docker/mysql/data.example -> docker_project/docker/mysql/data
-docker_project/docker/nginx/logs.example -> docker_project/docker/nginx/logs
-docker_project/.env.example -> docker_project/.env
-
-.envに必要な値を挿入する。
-
-3．プロジェクトフォルダ直下で、各コンテナをビルドする。
-cd docker_project
-docker compose up -d
-
-
--Laravelを使用する場合
-docker compose exec -it app bashで、コンテナ内に入り、composer create-project --prefer-dist laravel/laravel フォルダ名 "10.(バージョン)*"で、Laravelをインストールする。
-（コンテナ内で実行することで、テスト環境と、本番環境が似た状況で開発が進められる。）
-コンテナ内にあるLaravelのプロジェクトフォルダをコピーして、プロジェクト直下のフォルダに移動すると、GUIでも確認できる。
+1. git clone https://github.com/butahiro555/docker_project.git
+2. $ mv docker_project/.env.example docker_project/.env
+3. INSERT parameter on .env-file
+4．cd docker_project
+5. docker compose up -d
