@@ -7,7 +7,7 @@ services:
     ports:
       - "80:80"  # ホストとコンテナのポートマッピング
     volumes:
-      - ./docker/nginx:/var/log/nginx
+      - ./docker/nginx/logs:/var/log/nginx
     depends_on:
       - app  # このサービスが依存するサービス
     # Nginxに関連する追加の設定や最適化が必要な場合があります。
