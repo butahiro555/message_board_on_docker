@@ -19,8 +19,7 @@ WORKDIR /src
 # アプリケーションコードのコピー
 COPY . /src
 
-# ストレージディレクトリが存在しない場合に作成
-RUN mkdir -p /src/storage
+ADD . /src/storage
 
 # ストレージディレクトリの権限設定
 RUN chown -R www-data:www-data /src/storage
