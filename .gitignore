@@ -1,4 +1,14 @@
-# gitの変更履歴に含めないフォルダ、ファイル一覧
-docker/mysql/
-docker/nginx/logs/
+# 環境変数等を管理しているファイル
 .env
+
+# 変更頻度が多いため、ignore推奨のフォルダ
+docker/mysql/data/
+docker/nginx/logs/
+
+# MySQL設定ファイル
+/etc/mysql/my.cnf
+
+# SSL証明書関連ファイル
+/etc/mysql/cacert.pem
+/etc/mysql/server-cert.pem
+/etc/mysql/server-key.pem
