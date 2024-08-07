@@ -21,5 +21,6 @@ WORKDIR /var/www/html
 # 二番目のドットで、 コンテナ内の作業ディレクトリにファイルをコピーする。
 COPY . .
 
-# ストレージディレクトリの権限設定
-RUN chown -R www-data:www-data /var/www/html/storage
+# 必要なディレクトリの作成と権限設定
+RUN mkdir -p /var/www/html/storage && \
+    chown -R www-data:www-data /var/www/html/storage
