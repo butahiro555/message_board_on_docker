@@ -53,3 +53,6 @@ services:
     ports:
       - "6379:6379"  # ホストとコンテナのポートマッピング
     # Redisに関連する設定や最適化が必要な場合があります。
+networks:
+  default:
+    driver: bridge
