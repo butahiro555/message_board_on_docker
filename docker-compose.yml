@@ -19,8 +19,6 @@ services:
       dockerfile: ./docker/php/Dockerfile  # 使用するDockerfile
     depends_on:
       - db  # このサービスが依存するサービス
-    entrypoint: ["/bin/bash", "/var/www/html/init.sh"]
-    command: ["sh", "-c", "composer install && php artisan migrate && php-fpm"]
     volumes:
       - ./laravel:/var/www/html  # ソースコードのマウント
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini  # PHP設定ファイルのマウント
