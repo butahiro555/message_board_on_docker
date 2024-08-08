@@ -1,6 +1,6 @@
 FROM php:8.3-fpm
 
-# 必要なパッケージのインストールとクリーンアップ
+# 必要なパッケージのインストールとクリーンアップ(vimは任意)
 RUN apt-get update && \
     apt-get install -y \
     git \
@@ -16,15 +16,14 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # 作業ディレクトリの設定
 WORKDIR /var/www/html
 
-# Laravel プロジェクトの作成
-RUN composer create-project --prefer-dist laravel/laravel . "10.*"
+# storageディレクトリを作成しておく
+RUN mkdir -p /var/www/html/storage
 
-# 必要なディレクトリの作成と権限設定
-RUN mkdir -p /var/www/html/storage && \
-    chown -R www-data:www-data /var/www/html/storage
+# コンテナ内の作業ディレクトリにホストマシンのファイルをコピーする
+# 最初のドットで、 コンテナのビルドコンテキスト内のすべてのファイルをコピーする。
+# 二番目のドットで、 コンテナ内の作業ディレクトリにファイルをコピーする。
 
-# コンテナ内の /var/www/html ディレクトリに init.sh をコピー
-COPY init.sh /var/www/html/init.sh
+COPY . .
 
-# スクリプトに実行権限を付与
-RUN chmod +x /var/www/html/init.sh
+# 権限設定を付与する
+RUN chown -R www-data:www-data /var/www/html/storage
