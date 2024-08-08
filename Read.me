@@ -3,3 +3,8 @@
 3. $ mv .env.example .env
 4. Setting your parameter on .env-file.
 5. $ docker compose up -d
+6. $ cd laravel
+7. $ docker compose exec -it app bash
+8. # composer create-project --prefer-dist laravel/laravel . "10.*"  #Laravelのバージョンは任意で決定
+9. Setting your parameter on docker_project/laravel/.env-file.
+10. # php artisan migrate
