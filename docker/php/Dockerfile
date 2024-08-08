@@ -23,4 +23,8 @@ RUN composer create-project --prefer-dist laravel/laravel . "10.*"
 RUN mkdir -p /var/www/html/storage && \
     chown -R www-data:www-data /var/www/html/storage
 
-# その他の設定やコマンドが必要な場合に追加
+# コンテナ内の /var/www/html ディレクトリに init.sh をコピー
+COPY init.sh /var/www/html/init.sh
+
+# スクリプトに実行権限を付与
+RUN chmod +x /var/www/html/init.sh
