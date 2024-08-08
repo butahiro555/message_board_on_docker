@@ -8,7 +8,7 @@ services:
       - "80:80"  # ホストとコンテナのポートマッピング
     volumes:
       - ./docker/nginx/logs:/var/log/nginx  # logsフォルダに、コンテナ内のアクセスログと、エラーログをマウントする
-      - ./path/to/your/laravel:/var/www/html/laravel-project # LaravelプロジェクトをNginxコンテナにマウント
+      - ./src/laravel-project:/var/www/html/laravel-project # LaravelプロジェクトをNginxコンテナにマウント
     depends_on:
       - app  # このサービスが依存するサービス
 
